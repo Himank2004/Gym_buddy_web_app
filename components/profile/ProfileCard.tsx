@@ -1,0 +1,9 @@
+import { CalendarDays, Ruler, Target, Weight } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+
+interface ProfileCardProps { profile: { name: string; email: string; goal: string | null; age: number | null; heightCm: number | null; weightKg: number | null; createdAt: Date; }; }
+
+export function ProfileCard({ profile }: ProfileCardProps) {
+  const joined = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(profile.createdAt);
+  return <Card className="h-full"><div className="flex items-center gap-4"><span className="flex size-12 items-center justify-center rounded-2xl bg-lime-300 text-lg font-black text-zinc-950">{profile.name.slice(0, 1).toUpperCase()}</span><div><h2 className="text-lg font-black text-white">{profile.name}</h2><p className="text-sm text-zinc-500">{profile.email}</p></div></div><div className="mt-6 grid grid-cols-2 gap-3 text-sm"><div className="rounded-xl bg-white/4 p-3"><Target className="size-4 text-lime-300" /><p className="mt-3 text-xs text-zinc-500">Goal</p><p className="mt-1 font-bold text-white">{profile.goal ?? "Not set"}</p></div><div className="rounded-xl bg-white/4 p-3"><CalendarDays className="size-4 text-lime-300" /><p className="mt-3 text-xs text-zinc-500">Member since</p><p className="mt-1 font-bold text-white">{joined}</p></div><div className="rounded-xl bg-white/4 p-3"><Ruler className="size-4 text-lime-300" /><p className="mt-3 text-xs text-zinc-500">Height · age</p><p className="mt-1 font-bold text-white">{profile.heightCm ? `${profile.heightCm} cm` : "—"} · {profile.age ?? "—"}</p></div><div className="rounded-xl bg-white/4 p-3"><Weight className="size-4 text-lime-300" /><p className="mt-3 text-xs text-zinc-500">Weight</p><p className="mt-1 font-bold text-white">{profile.weightKg ? `${profile.weightKg} kg` : "Not set"}</p></div></div></Card>;
+}
