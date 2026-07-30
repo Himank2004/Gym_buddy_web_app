@@ -39,7 +39,7 @@ Install the following before starting:
 1. Clone the repository and enter the project directory.
 
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/Himank2004/Gym_buddy_web_app/
    cd Fitforge
    ```
 
